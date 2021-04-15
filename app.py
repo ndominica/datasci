@@ -16,4 +16,6 @@ fig = px.line(data_frame=hun, x ='week', y='cumulative_count', color='indicator'
 
 
 st.title("Hello World!")
-st.write("Again!")
+country = st.selectbox('Select a country',['Hungary', 'Germany', 'Austria'])
+st.write('The selected country is {}'.format(country))
+st.plotly_chart(fig)
