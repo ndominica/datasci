@@ -2,10 +2,8 @@ FROM python:3.8.5
 
 WORKDIR /app
 
-COPY requirements.txt ./requirements.txt
+COPY . .
 
 RUN pip install -r requirements.txt
 
-COPY . .
-
-CMD streamlit run app.py
+CMD ["streamlit", "run", "app.py"]
