@@ -3,7 +3,12 @@ import pandas as pd
 import plotly.express as px
 
 
-
+@st.cache
+def read_data(data_loc):
+    data = pd.read_csv(data_loc)
+    data['week'] = data.year_week.apply(lambda x:convert(x))
+    return data
+    
 
 def convert(x):
     year, week = x.split('-')
@@ -12,8 +17,7 @@ def convert(x):
 
 
 # Data
-data = pd.read_csv('data/csv')
-data['week'] = data.year_week.apply(lambda x:convert(x))
+data = read_data('data/csv')
 list_of_countries = list(set(data['country']))
 list_of_countries.sort(reverse=False)
 
